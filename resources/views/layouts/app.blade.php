@@ -9,13 +9,14 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-
+    @include('partials.stylesheets')
 </head>
 <body>
     <!-- Preloader -->
     <div class="preloader">
         <div class="cssload-speeding-wheel"></div>
     </div>
+
     <div id="wrapper">
         @include('partials.navbar')
         @include('partials.sidebar')
