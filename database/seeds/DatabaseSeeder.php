@@ -38,8 +38,13 @@ class DatabaseSeeder extends Seeder
         $commentQuantity = 30;
 
         factory(User::class, $userQuantity)->create();
-        factory(Post::class, $postQuantity)->create();
+        factory(Post::class, $postQuantity)->create()->each(
+            function($post) {
+                $tags = Tag::all()->random(mt_rand(1,3))->pluck('id');
+                $post->tags()->attach($tags);
+            }
+        );
+        
         factory(Comment::class, $commentQuantity)->create();
-
     }
 }

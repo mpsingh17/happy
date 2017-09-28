@@ -319,6 +319,7 @@ class ComposerStaticInitf7612ba6ddaab20f6f33042a86668799
         'CreateLikesTable' => __DIR__ . '/../..' . '/database/migrations/2017_09_27_194419_create_likes_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreatePermissionTables' => __DIR__ . '/../..' . '/database/migrations/2017_09_23_070820_create_permission_tables.php',
+        'CreatePostTagTable' => __DIR__ . '/../..' . '/database/migrations/2017_09_29_104357_create_post_tag_table.php',
         'CreatePostsTable' => __DIR__ . '/../..' . '/database/migrations/2017_09_26_093341_create_posts_table.php',
         'CreateTagsTable' => __DIR__ . '/../..' . '/database/migrations/2017_09_27_092336_create_tags_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',

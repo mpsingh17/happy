@@ -49,6 +49,7 @@ return array(
     'CreateLikesTable' => $baseDir . '/database/migrations/2017_09_27_194419_create_likes_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreatePermissionTables' => $baseDir . '/database/migrations/2017_09_23_070820_create_permission_tables.php',
+    'CreatePostTagTable' => $baseDir . '/database/migrations/2017_09_29_104357_create_post_tag_table.php',
     'CreatePostsTable' => $baseDir . '/database/migrations/2017_09_26_093341_create_posts_table.php',
     'CreateTagsTable' => $baseDir . '/database/migrations/2017_09_27_092336_create_tags_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
