@@ -11,7 +11,7 @@
         <div class="col-md-6 col-xs-12">
             <div class="white-box">
                 <h2 class="text-primary text-center">Register</h2>
-                <form class="form-horizontal form-material">
+                <form class="form-horizontal form-material" method="POST" action="{{ route('register') }}">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label class="col-md-12">Email</label>

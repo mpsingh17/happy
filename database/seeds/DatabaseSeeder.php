@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RolesTableSeeder::class);
         $this->call(PermissionsTableSeeder::class);
         $this->call(TagsTableSeeder::class);
+        $this->call(CreateAdminSeeder::class);
 
         $userQuantity    = 10;
         $postQuantity    = 20;

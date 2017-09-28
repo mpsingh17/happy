@@ -5,9 +5,21 @@ namespace App\Http\Controllers\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Post;
+use Auth;
 
 class DashboardController extends Controller
 {
+    public function __construct() 
+    {
+        $this->middleware('auth');
+    }
+    
+    public function dashboard()
+    {
+        $user = Auth::user();
+        return view('users.dashboard.dashboard')->with('user', $user);
+    }
+
     public function allPosts()
     {
         $posts = Post::all();

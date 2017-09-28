@@ -17,7 +17,19 @@ Route::get('/', [
 
 Auth::routes();
 
-Route::prefix('admin')->group(function() {
+Route::middleware(['auth', 'checkUserConfirm', 'checkUserStatus'])->group(function() {
+    Route::get('/userDashboard', [
+        'uses' => 'User\DashboardController@dashboard',
+        'as'   => 'user.dashboard'
+    ]);
+
+    
+});
+
+
+Route::get('confirmUser/{confirmToken}/{id}', 'Auth\RegisterController@confirmUser')->name('confirmUser');
+
+Route::prefix('admin')->middleware(['auth', 'checkRoleAdmin'])->group(function() {
 
     Route::get('/dashboard', [
         'uses' => 'Admin\DashboardController@dashboard',

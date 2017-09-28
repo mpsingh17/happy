@@ -6,6 +6,8 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Mail\ConfirmUser;
+use Mail;
 
 class RegisterController extends Controller
 {
@@ -27,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -48,7 +50,6 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
@@ -63,9 +64,29 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'confirm_token' => str_random(40)
         ]);
     }
+
+    //sending email
+    private function sendEmail($user) 
+    {
+        Mail::to($user->email)->send(new ConfirmUser($user));            
+    }
+
+    //confirm user with token...
+    public function confirmUser($confirmToken, $id) 
+    {
+        $user = User::find($id);
+        if($user->confirm_token === $confirmToken) {
+            $user->status = true;
+            $user->confirmed = true;
+            $user->save();
+            $this->guard()->login($user);
+            return redirect()->route('user.dashboard');
+        }
+    }
+
 }
