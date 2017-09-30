@@ -17,12 +17,13 @@ Route::get('/', [
 
 Auth::routes();
 
-Route::middleware(['auth', 'checkUserConfirm', 'checkUserStatus'])->group(function() {
+Route::middleware(['auth'])->group(function() {
     Route::get('/userDashboard', [
         'uses' => 'User\DashboardController@dashboard',
         'as'   => 'user.dashboard'
     ]);
 
+    Route::resource('userPosts', 'User\DashboardController');
     
 });
 

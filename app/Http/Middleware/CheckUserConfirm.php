@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Auth;
+use App\User;
 
 class CheckUserConfirm
 {
@@ -16,10 +17,10 @@ class CheckUserConfirm
      */
     public function handle($request, Closure $next)
     {
-        $user = Auth::user();
+        $user = User::where('email', $request->email)->first();
 
         if($user->confirmed != 1) {
-            return back()->with('fail', 'Your account is not confirmed.');    
+            return redirect('/')->with('fail', 'Your account is not confirmed.');
         }
         return $next($request);
     }
