@@ -65,6 +65,8 @@
                     <div class="form-group">
                         <div class="col-sm-12">
                             <button class="btn btn-success">Log In</button>
+                            <br><br>
+                            <a href="{{ url('auth/facebook') }}" class="btn btn-success" target="_blank">Log in with Facebook</a>
                         </div>
                     </div>
                 </form>

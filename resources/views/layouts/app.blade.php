@@ -12,11 +12,6 @@
     @include('partials.stylesheets')
 </head>
 <body>
-    <!-- Preloader -->
-    <div class="preloader">
-        <div class="cssload-speeding-wheel"></div>
-    </div>
-
     <div id="wrapper">
         @include('partials.navbar')
         @include('partials.sidebar')

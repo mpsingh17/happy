@@ -24,8 +24,10 @@ Route::middleware(['auth'])->group(function() {
     ]);
 
     Route::resource('userPosts', 'User\DashboardController');
-    
 });
+
+Route::get('auth/facebook', 'Auth\SocialAuthController@redirectToProvider');
+Route::get('auth/facebook/callback', 'Auth\SocialAuthController@handleProviderCallback');
 
 
 Route::get('confirmUser/{confirmToken}/{id}', 'Auth\RegisterController@confirmUser')->name('confirmUser');

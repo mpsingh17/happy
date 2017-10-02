@@ -57,6 +57,19 @@ class Handler extends ExceptionHandler
             return response()->view('errors.404', ['flag' => $modelName]);
         }
 
+        if ($exception instanceof HttpException) {
+            // dd('HttpException');
+            return response()->view('errors.404', ['flag' => $exceptin->getMessage()]);
+        }
+
+        if ($exception instanceof \Illuminate\Database\QueryException) {
+            // dd($exception);
+            $errorCode = $exception->errorInfo[1];
+            if($errorCode == 1451) {
+                return response()->view('errors.404', ['flag' => 'This resource can not be deleted']);
+            }
+        }
+
         return parent::render($request, $exception);
     }
 
